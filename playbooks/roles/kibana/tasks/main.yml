@@ -47,6 +47,6 @@
     state: restarted
     daemon_reload: yes
 
-import_tasks: kibana_dashboards.yml
+- import_tasks: kibana_dashboards.yml
 
 ...

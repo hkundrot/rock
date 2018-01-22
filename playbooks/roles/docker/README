@@ -1,1 +1,6 @@
-Docker is containerization software that allows each software program to be run in a controlled environment.  Thus allows for great flexibility and less dependency problems.
+Docker
+======
+
+<h1>Helpful Links</h1>
+
+https://platform9.com/blog/container-namespaces-deep-dive-container-networking/

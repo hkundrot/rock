@@ -19,10 +19,19 @@
     creates: "{{ rocknsm_dir }}/rock-dashboards-{{ rock_dashboards_branch }}"
     remote_src: yes
 
+- name: Query Kibana package info
+  yum:
+    list: kibana
+  register: kibana_pkg
+
+- name: Store installed kibana pkg info
+  set_fact:
+    kibana_info: "{{ kibana_pkg.results | selectattr('repo', 'match', 'installed') | first }}"
+
 - name: Check current Kibana config
   uri:
     method: "GET"
-    url: "{{ es_url }}/.kibana/config/{{ kibana_info.version }}/_source"
+    url: "{{ es_url_external }}/.kibana/config/{{ kibana_info.version }}/_source"
     return_content: true
   register: kibana_cfg
   changed_when: false
