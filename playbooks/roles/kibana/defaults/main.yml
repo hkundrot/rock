@@ -20,4 +20,7 @@ kibana_ip: '0.0.0.0'
 kibana_image: 'docker.elastic.co/kibana/kibana'
 kibana_container_name: 'rock-kibana'
 kibana_yum: 'kibana'
+
+kibana_dir: "{{ rocknsm_dir }}/kibana"
+kibana_dashboard_dir: "{{ rocknsm_dir }}/kibana/dashboards"
 ...

@@ -36,13 +36,6 @@
     state: directory
     mode: 0644
 
-# Install Kafkacat for the dockervm
-# TODO: Is this needed?
-#- name: Install Kafkacat package
-#  yum:
-#    name: kafkacat
-#    state: installed
-
 - name: 'Install Kafka service file'
   template:
     src: 'kafka.service.j2'

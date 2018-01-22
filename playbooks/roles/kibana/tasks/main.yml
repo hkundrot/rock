@@ -24,12 +24,20 @@
     group: root
     state: link
 
-- name: 'Create new directories'
+- name: 'Create data directory'
   file:
     path: "{{ rock_data_dir }}/kibana"
     owner: 1000
     group: 1000
-    mode: u+rw,g+rw
+    mode: 0664
+    state: directory
+
+- name: 'Create kibana directory'
+  file:
+    path: "{{ kibana_dir }}"
+    owner: 1000
+    group: 1000
+    mode: 0754
     state: directory
 
 - name: 'Copy Kibana compose file'
