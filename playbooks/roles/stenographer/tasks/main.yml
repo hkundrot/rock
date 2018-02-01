@@ -18,16 +18,16 @@
     path: "{{ stenographer_rock_dir }}"
     state: directory
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
 
 - name: Copy Stenographer information file
   copy:
     src: "templates/stenoread.info"
     dest: "{{ stenographer_rock_dir }}/stenoread.info"
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
 
 - name: Create Stenographer directories
   file:
@@ -42,8 +42,8 @@
     src: "templates/{{ item }}"
     dest: "/etc/systemd/system/{{ item }}"
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
   with_items:
     - stenographer.service
     - stenographer@.service

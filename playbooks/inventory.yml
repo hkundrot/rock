@@ -81,7 +81,7 @@ all:
       hosts:
         rocksensor1.lan:
           ansible_hostname: rocksensor1.lan
-          ansible_user: root
+          ansible_user: '{{ rocknsm_user }}'
           ansible_connection: ssh
 
     servers:
@@ -92,7 +92,7 @@ all:
           hosts:
             rockserver1.lan:
               ansible_hostname: rockserver1.lan
-              ansible_user: root
+              ansible_user: '{{ rocknsm_user }}'
               ansible_connection: ssh
 
         ingest:

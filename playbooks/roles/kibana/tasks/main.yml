@@ -13,15 +13,15 @@
     src: 'kibana.service.j2'
     dest: '/etc/systemd/system/kibana.service'
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
 
 - name: 'Link Kibana service file'
   file:
     src: '/etc/systemd/system/kibana.service'
     dest: '/etc/systemd/system/rock.target.wants/kibana.service'
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
     state: link
 
 - name: 'Create new directories'
@@ -45,8 +45,8 @@
     src: 'kibana-compose.yml.j2'
     dest: "{{ rock_compose_files }}/kibana-compose.yml"
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
 
 - name: 'Enable Kibana service'
   service:

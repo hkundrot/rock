@@ -13,8 +13,13 @@
     src: "suricata.yaml.j2"
     dest: "/etc/suricata/suricata.yaml"
     mode: 0644
+<<<<<<< HEAD
     owner: root
     group: root    
+=======
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
+>>>>>>> c0007e9... Added SSH key login to Ansible
 
 - name: Create Suricata directories
   file:
@@ -54,23 +59,23 @@
     src: "suricata.service"
     dest: "/etc/systemd/system/suricata.service"
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
 
 - name: 'Link suricata service files'
   file:
     src: "/etc/systemd/system/suricata.service"
     dest: "/etc/systemd/system/rock.target.wants/suricata.service"
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
     state: link
 
 - name: Create IP reputation config dir
   file:
     path: /etc/suricata/rules/iplists
     state: directory
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
     mode: 0755
 
 - name: Configure Suricata /var directory permissions
@@ -92,5 +97,5 @@
     src: templates/logrotate-suricata.conf.j2
     dest: /etc/logrotate.d/suricata.conf
     mode: 0644
-    owner: root
-    group: root
+    owner: '{{ rocknsm_user }}'
+    group: '{{ rocknsm_user }}'
