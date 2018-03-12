@@ -64,7 +64,7 @@ all:
           ansible_hostname: rockserver1.lan
           ansible_user: root
           ansible_connection: ssh
-          management_ipv4: 10.11.4.30
+          management_ipv4: 10.11.4.33
           data_disk_devices:
           - /dev/sdb
 
