@@ -21,6 +21,7 @@
     state: disabled
   register: selinux
 
+# TODO - this is broken
 - name: Reboot to finish off SELinux completely
   command: "/sbin/shutdown -r +1 --no-wall"
   async: 0
