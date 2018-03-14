@@ -29,12 +29,19 @@
   when: selinux.changed
   ignore_errors: yes
 
-- name: Wait for boot
-  wait_for:
-    host: "{{ inventory_hostname }}"
-    port: 22
-    delay: 300
-  delegate_to: localhost
+# This pause is mandatory, otherwise the existing control connection gets reused!
+- name: Waiting 30 seconds for reboot
+  pause: seconds=30
+  when: selinux.changed
+
+# Now we will run a local 'ansible -m ping' on this host until it returns.
+# This works with the existing ansible hosts inventory and so any custom ansible_ssh_hosts definitions are being used
+- name: Ping until host is back up
+  local_action: shell ansible -u {{ ansible_user_id }} -m ping {{ inventory_hostname }}
+  register: result
+  until: result.rc == 0
+  retries: 30
+  delay: 10
   when: selinux.changed
 
 - name: Swap Off
