@@ -32,7 +32,7 @@
 - name: Gluster | Wait for daemonset
   shell: "kubectl get sa heketi-service-account --no-headers=true | awk '{ print $1 }'"
   register: ds_not_ready
-  until: sa_not_ready.stdout=='heketi-service-account'
+  until: ds_not_ready.stdout=='heketi-service-account'
   retries: 10
   delay: 5
   ignore_errors: yes
