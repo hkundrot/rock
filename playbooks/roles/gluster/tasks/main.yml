@@ -16,10 +16,9 @@
   when: inventory_hostname in groups['master-server']
 
 - name: Label Nodes
-  command: "kubectl label node {{ item }} storagenode=glusterfs --overwrite=true"
+  command: "kubectl label node {{ item }} storagenode=glusterfs"
   with_items:
-    - "{{ groups['master-server'] }}"
-    - "{{ groups['nodes'] }}"
+    - "{{ groups['all'] }}"
   when: inventory_hostname in groups['master-servers']
 
 - include_tasks: deploy.yml
