@@ -4,27 +4,16 @@
 ---
 
 # Uninstall GlusterFS
-#- include_tasks: remove.yml
-#  when: remove
+- include_tasks: remove.yml
+  when: remove
+
+- include_tasks: wipe.yml
+
 # Install GlusterFS, this will fail spectacularly if this is not a fresh install,
 # or remove is not run first
-- name: Install Gluster Packages
-  include_role:
-    name: common
-    tasks_from: install_gluster.yml
-
-- name: Update Kernel Mods
-  include_role:
-    name: common
-    tasks_from: kernel_mods.yml
-
-- name: Update Sysctl
-  include_role:
-    name: common
-    tasks_from: sysctl.yml
 
 - include_tasks: files.yml
-  when: inventory_hostname in groups['master-server'] 
+  when: inventory_hostname in groups['master-server']
 
 - name: Label Nodes
   command: "kubectl label node {{ item }} storagenode=glusterfs --overwrite=true"
@@ -33,7 +22,7 @@
     - "{{ groups['nodes'] }}"
 
 - include_tasks: deploy.yml
-  when: inventory_hostname in groups['master-server'] 
+  when: inventory_hostname in groups['master-server']
 - include_tasks: install.yml
   when: inventory_hostname in groups['master-server']
 
@@ -45,9 +34,7 @@
 - name: Source Profile
   shell: "source /etc/profile"
 
-- include_tasks: wipe.yml
-
 - include_tasks: complete.yml
-  when: inventory_hostname in groups['master-server'] 
+  when: inventory_hostname in groups['master-server']
 
 ...
