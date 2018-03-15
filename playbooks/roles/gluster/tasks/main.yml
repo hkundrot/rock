@@ -20,6 +20,7 @@
   with_items:
     - "{{ groups['master-server'] }}"
     - "{{ groups['nodes'] }}"
+  when: inventory_hostname in groups['master-servers']
 
 - include_tasks: deploy.yml
   when: inventory_hostname in groups['master-server']
