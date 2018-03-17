@@ -23,7 +23,7 @@
 
 # TODO - this is broken
 - name: Reboot to finish off SELinux completely
-  command: "/sbin/shutdown -r +1 --no-wall"
+  command: "shutdown -r now"
   async: 0
   poll: 0
   when: selinux.changed
