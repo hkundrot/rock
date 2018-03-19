@@ -27,7 +27,7 @@
   when: inventory_hostname in groups['master-server']
 
 - debug:
-  msg: "Hostvars {{hostvars['master-server]']}}"
+  msg: "Hostvars {{hostvars['master-server']]}}"
 
 - name: Add Env to Profile
   copy:
