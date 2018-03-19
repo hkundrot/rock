@@ -64,7 +64,7 @@ all:
           ansible_hostname: rockserver1.lan
           ansible_user: root
           ansible_connection: ssh
-          management_ipv4: 10.11.4.33
+          management_ipv4: 10.11.4.62
           data_disk_devices:
           - /dev/sdb
 
@@ -78,7 +78,7 @@ all:
             rocksensor1.lan:
               ansible_hostname: rocksensor1.lan
               ansible_connection: ssh
-              management_ipv4: 10.11.4.31
+              management_ipv4: 10.11.4.63
               bro_workers: 2
               monitor_interfaces:
               - enp0s8
@@ -88,10 +88,10 @@ all:
         servers:
 
           hosts:
-            rockserver2.lan:
-              ansible_hostname: rockserver2.lan
+            rockserver3.lan:
+              ansible_hostname: rockserver3.lan
               ansible_user: root
               ansible_connection: ssh
-              management_ipv4: 10.11.4.32
+              management_ipv4: 10.11.4.64
               data_disk_devices:
               - /dev/sdb

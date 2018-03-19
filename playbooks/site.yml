@@ -21,8 +21,8 @@
 # the gathered facts will fail.
 # WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
   roles:
-#    - common
-#    - chrony
+    - common
+    - chrony
 
 - hosts: kubernetes
   roles:
