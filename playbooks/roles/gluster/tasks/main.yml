@@ -26,6 +26,9 @@
 - include_tasks: install.yml
   when: inventory_hostname in groups['master-server']
 
+- debug:
+  msg: "Hostvars {{hostvars['master-server]']}}"
+
 - name: Add Env to Profile
   copy:
     dest: /etc/profile.d/99-dmss.sh
