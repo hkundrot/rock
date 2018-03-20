@@ -156,9 +156,9 @@
   yum:
     name: "{{ item }}"
     state: absent
+  when: ansible_distribution == 'CentOS'
   with_items:
     - "centos-release-gluster{{ centos_gluster_ver }}"
-  #when: ansible_distribution == 'CentOS'
 
 - name: "Remove RedHat repo"
   yum_repository:
