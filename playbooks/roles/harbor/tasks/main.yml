@@ -2,6 +2,11 @@
 ###################  Harbor Install ###################
 #######################################################
 ---
+- name: "Create directory for harbor"
+  file:
+    path: "{{ rocknsm_dir }}"
+    state: directory
+    mode: 0740
 
 - name: "Download Harbor {{ harbor_ver }} build"
   unarchive:
