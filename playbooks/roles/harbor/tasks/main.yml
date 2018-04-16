@@ -8,6 +8,17 @@
     state: directory
     mode: 0740
 
+- name: "Install Docker"
+  yum:
+    name: docker
+    state: installed
+
+- name: start docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+
 - name: "Download Harbor {{ harbor_ver }} build"
   unarchive:
     src: "https://storage.googleapis.com/harbor-releases/release-{{ harbor_ver }}/harbor-online-installer-v{{ harbor_ver }}.tgz"
