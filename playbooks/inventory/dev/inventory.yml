@@ -15,14 +15,9 @@ all:
           - "172.16.0.0/12"
         serivces_cidr: "192.168.57.0/24"
         bpf_filter: ""
-<<<<<<< refs/remotes/origin/devel
-        es_mem: 2
-        es_masters: 3
-        pcap_bpf_filter: ""
-=======
-        es_mem: 1 
+        es_mem: 1
         es_masters: 2
->>>>>>> Added a task for harbor and added that task to the main site.yml playbook Made appropriate variables in harbor/defaults/main.yml
+        pcap_bpf_filter: ""
         es_datas: 0
         elastic_pv_size: 1000
         kafka_pv_size: 10
