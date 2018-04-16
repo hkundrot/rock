@@ -15,8 +15,9 @@ all:
           - "172.16.0.0/12"
         serivces_cidr: "192.168.57.0/24"
         bpf_filter: ""
-        es_mem: 1 
+        es_mem: 1
         es_masters: 2
+        pcap_bpf_filter: ""
         es_datas: 0
         elastic_pv_size: 1000
         kafka_pv_size: 10
